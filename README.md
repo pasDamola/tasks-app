@@ -1,0 +1,1 @@
+A task management API built with Node.js, Express and MongoDB with Mongoose client
