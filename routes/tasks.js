@@ -5,7 +5,7 @@ const Task = require('../models/task')
 // Getting all tasks
 router.get('/', async (req, res) => {
     try {
-        const tasks = await task.find()
+        const tasks = await Task.find()
         res.json(tasks)
     } catch (error) {
         res.status(500).json({ message: error.message })
@@ -21,7 +21,7 @@ router.get('/:id', getTasks, (req, res) => {
 
 // Creating one task
 router.post('/', async  (req, res) => {
-    const task = new task({
+    const task = new Task({
         name: req.body.name,
         subscribedToChannel: req.body.subscribedToChannel
     })
