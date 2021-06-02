@@ -38,9 +38,10 @@ const userSchema = mongoose.Schema({
     }
 })
 
+
 // findByCredentials
-userSchema.statics.findByCredentials = async (email, password) => {
-    const user = await User.findOne({ email: email })
+userSchema.statics.findByCredentials = async function(email, password) {
+    const user = await this.findOne({ email: email })
 
     if(!user) {
         throw new Error('Unable to Login')
@@ -67,7 +68,5 @@ userSchema.pre('save',async  function(next) {
 })
 
 
-const User = mongoose.model('User', userSchema)
 
-
-module.exports = User
+module.exports = mongoose.model('User', userSchema)
