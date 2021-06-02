@@ -20,15 +20,15 @@ router.get('/:id', getUser, (req, res) => {
 
 
 // Creating one user
-router.post('/',async  (req, res) => {
-    const user = new user({
+router.post('/', async  (req, res) => {
+    const user = new User({
         name: req.body.name,
         email: req.body.email,
         age: req.body.age,
         password: req.body.password
     })
-
     try {
+        await User.init();
         const newUser = await user.save()
         res.status(201).json({ message: 'New user added', data: newUser})
     } catch (err) {
@@ -36,6 +36,17 @@ router.post('/',async  (req, res) => {
     }
 })
 
+
+//login route
+router.post('/login', async (req, res) => {
+    try {
+        const user = await User.findByCredentials(req.body.email, req.body.password)
+        res.send(user)   
+    } catch (error) {
+        console.log(error)
+        res.status(400).send({message: error.message})
+    }
+})
 
 
 // Updating one user

@@ -9,7 +9,7 @@ const tasksRouter = require('./routes/tasks')
 const port = process.env.PORT || 3000
 
 
-mongoose.connect(process.env.DATABASE_URL, { useUnifiedTopology: true, useNewUrlParser: true })
+mongoose.connect(process.env.DATABASE_URL, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true })
 const db = mongoose.connection
 
 db.on('error', (error) => console.error(error))
