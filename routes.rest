@@ -10,8 +10,8 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "name": "Sand4",
-    "email": "attah@gmail.com",
+    "name": "Sand6",
+    "email": "h@gmail.com",
     "subscribedToChannel": "OyinChi",
     "password": "phpandjs"
 }

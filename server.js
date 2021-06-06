@@ -13,11 +13,10 @@ mongoose.connect(process.env.DATABASE_URL, { useUnifiedTopology: true, useNewUrl
 const db = mongoose.connection
 
 db.on('error', (error) => console.error(error))
-db.once('open', () => console.log('Database Connected') )
+db.once('open', () => console.log('Database Connected'))
+
 
 app.use(express.json())
-
-
 app.use('/users', usersRouter)
 app.use('/tasks', tasksRouter)
 
