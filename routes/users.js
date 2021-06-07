@@ -52,6 +52,34 @@ router.post('/login', async (req, res) => {
 })
 
 
+//logout route
+router.post('/logout', auth, async (req, res) => {
+    try {
+        req.user.tokens = req.user.tokens.filter(token => {
+            return token.token !== req.token
+        })
+
+        await req.user.save()
+        res.send({ message: 'Logged out successfully'})
+    } catch (error) {
+        res.status(500).send()
+    }
+})
+
+//logout of all sessions
+router.post('/logoutAll', auth, async (req, res) => {
+    try {
+        
+        req.user.tokens = []
+        res.send({ message: 'Logged out of all sessions successfully'})
+        await req.user.save()
+    } catch (error) {
+        res.status(500).send()
+    }
+})
+
+
+
 // Updating one user
    // The reason we use patch and not put is because patch only updates the information of only one record while put does so for all the records
 router.patch('/:id', async (req, res) => {

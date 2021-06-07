@@ -13,7 +13,7 @@ Content-Type: application/json
 
 {
     "name": "Sand6",
-    "email": "h@gmail.com",
+    "email": "lata@gmail.com",
     "subscribedToChannel": "OyinChi",
     "password": "phpandjs"
 }
@@ -31,6 +31,10 @@ POST http://localhost:3000/users/login
 Content-Type: application/json
 
 {  
-    "email": "tata@gmail.com",
+    "email": "h@gmail.com",
     "password": "phpandjs"
 }
+
+###
+POST http://localhost:3000/users/logoutAll
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGJjMTdmNDU4MDQzNTNiMjgzYmY1NWEiLCJpYXQiOjE2MjI5Mzk2MzZ9.vxqRp_sr6d_75yE4rglH5vO_4bAoae2iYnh_qulq2xI
