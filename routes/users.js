@@ -4,7 +4,7 @@ const User = require('../models/user')
 const auth = require('../middleware/auth')
 
 // Getting all users
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
     try {
         const users = await User.find()
         res.json(users)
@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
 
 
 // Getting one user
-router.get('/:id', getUser, (req, res) => {
+router.get('/:id', [auth, getUser], (req, res) => {
     res.send(res.user)
 })
 
@@ -54,7 +54,7 @@ router.post('/login', async (req, res) => {
 
 // Updating one user
    // The reason we use patch and not put is because patch only updates the information of only one record while put does so for all the records
-router.patch('/:id', getUser, async (req, res) => {
+router.patch('/:id', async (req, res) => {
     if(req.body.name !== null) {
         res.user.name = req.body.name
     } 
@@ -74,7 +74,7 @@ router.patch('/:id', getUser, async (req, res) => {
 
 
 // Deleting one user
-router.delete('/:id', getUser, async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
       await  res.user.remove()
       res.json({ message: 'Deleted user'})

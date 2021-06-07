@@ -2,8 +2,10 @@
 GET http://localhost:3000/users
 
 
+
 ###
-GET http://localhost:3000/users/60acc6e769c737a23c03eeb0
+GET http://localhost:3000/users/60bc17f45804353b283bf55a
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGJjMTdmNDU4MDQzNTNiMjgzYmY1NWEiLCJpYXQiOjE2MjI5Mzk2MzZ9.vxqRp_sr6d_75yE4rglH5vO_4bAoae2iYnh_qulq2xI
 
 ###
 POST http://localhost:3000/users
